@@ -7,19 +7,19 @@ public class Main {
 
         //Iterative because you gotta always keep your roots!
         //System.out.println(isEvenWordIter("appas"));
-        System.out.println(isEvenWord("appeases"));
+        System.out.println(isEvenWordIter("potato"));
+        System.out.println(isEvenWordIter("appeases"));
+        System.out.println(isEvenWord("appeasesed"));
     }
 
     public static boolean isEvenWordIter(String word){
         int even = 0;
         char [] letters = word.toCharArray();
-        for(int i = 0; i < letters.length; i++)
+        for(int firstLetter = 0; firstLetter < letters.length; firstLetter++)
         {
-            int ascii = (int) letters[i];
-            for(int j = i + 1; j < letters.length; j++)
+            for(int remainingLetters = firstLetter + 1; remainingLetters < letters.length; remainingLetters++)
             {
-                int asciij = (int) letters[j];
-                if(ascii == asciij)// if every letter in the word has a duplicate
+                if(letters[firstLetter] == letters[remainingLetters])// if every letter in the word has a duplicate
                 {
                     even++;
                 }
@@ -37,10 +37,10 @@ public class Main {
         if(word.length() == 0 ){
             return true;
         } else {
-            String thing = word.substring(2);
-            String a = String.valueOf(word.charAt(0));
-            if(thing.contains(a)){
-                word.replace(a,"");
+            String remaining = word.substring(2);
+            String firstLetter = String.valueOf(word.charAt(0));
+            if(remaining.contains(firstLetter)){
+                word.replace(firstLetter,"");
             }
         }
         return isEvenWordIter(word);
