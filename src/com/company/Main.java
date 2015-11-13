@@ -9,24 +9,25 @@ public class Main {
         System.out.println(isEvenWordIter("potato"));
         System.out.println(isEvenWordIter("appeases"));
         System.out.println(isEvenWord("appeasesed"));
+        System.out.println(isEvenWord("appleale"));
+        System.out.println(isEvenWord("firetrucks!"));
+        System.out.println(isEvenWord("momo"));
+        System.out.println(isEvenWord("newton"));
         // more test cases would be good
     }
 
     public static boolean isEvenWordIter(String word){
         int even = 0;
         char [] letters = word.toCharArray();
-        for(int firstLetter = 0; firstLetter < letters.length; firstLetter++)
-        {
-            for(int remainingLetters = firstLetter + 1; remainingLetters < letters.length; remainingLetters++)
-            {
-                if(letters[firstLetter] == letters[remainingLetters])// if every letter in the word has a duplicate
-                {
+        for(int firstLetter = 0; firstLetter < letters.length; firstLetter++){
+            for(int remainingLetters = firstLetter + 1; remainingLetters < letters.length; remainingLetters++){
+                // if every letter in the word has a duplicate
+                if(letters[firstLetter] == letters[remainingLetters]){
                     even++;
                 }
             }
         }
-        if( letters.length == even * 2 && even % 2 == 0)
-        {
+        if( letters.length == even * 2 && even % 2 == 0){
             return true;
         }
         return false;
@@ -41,10 +42,9 @@ public class Main {
             String firstLetter = String.valueOf(word.charAt(0));
             if(remaining.contains(firstLetter)){
                 word.replace(firstLetter,"");
-                return isEvenWordIter(word); // this makes more sense here, since why would you call if this isn't the case
+                return isEvenWordIter(word);
             }
-            return false; // when you do decide that its false?
+            return false;
         }
     }
-    // I like that it's clean and consice
 }
