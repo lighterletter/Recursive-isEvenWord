@@ -3,13 +3,13 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
 
         //Iterative because you gotta always keep your roots!
-        //System.out.println(isEvenWordIter("appas"));
+        System.out.println(isEvenWordIter("appas"));
         System.out.println(isEvenWordIter("potato"));
         System.out.println(isEvenWordIter("appeases"));
         System.out.println(isEvenWord("appeasesed"));
+        // more test cases would be good
     }
 
     public static boolean isEvenWordIter(String word){
@@ -41,8 +41,10 @@ public class Main {
             String firstLetter = String.valueOf(word.charAt(0));
             if(remaining.contains(firstLetter)){
                 word.replace(firstLetter,"");
+                return isEvenWordIter(word); // this makes more sense here, since why would you call if this isn't the case
             }
+            return false; // when you do decide that its false?
         }
-        return isEvenWordIter(word);
     }
+    // I like that it's clean and consice
 }
